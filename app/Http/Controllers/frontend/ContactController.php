@@ -50,7 +50,7 @@ class ContactController extends Controller
                     'address'=>$request->address,
                 ];
                 $contact->insert($data);
-                return redirect('frontend.contact')->with('msg','Contact Successfully inserted');
+                return Inertia::render('Contact');
             }
     }
 

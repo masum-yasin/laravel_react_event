@@ -4,7 +4,7 @@ import { useForm } from '@inertiajs/react';
 import React from 'react';
 
 const Contact = () => {
-    const { data, setData, post } = useForm({});
+    const { data, setData,post } = useForm();
     
   const handleSubmit = (e)=>{
     e.preventDefault();
@@ -86,26 +86,27 @@ const Contact = () => {
             <div className="row">
               <div className="col-lg-8 pe-lg-4 mb-4">
                 <div id="contactform-error-msg" />
-                                          <form  onSubmit={onsubmit}>
+                                          <form method='post' onSubmit={handleSubmit}>
+                                           
                               <div className="form-group mb-2">
                                 <label>Name*</label>
-                                <input type="text" placeholder name="name" />
+                                <input type="text" placeholder name="name" onChange={(e) => setData('name', e.target.value)} />
                               </div>
                               <div className="form-group mb-2">
                                 <label>Email*</label>
-                                <input type="email" placeholder name="email" />
+                                <input type="email" placeholder name="email" onChange={(e) => setData('email', e.target.value)} />
                               </div>
                               <div className="form-group mb-2">
                                 <label>Phone Number*</label>
-                                <input type="number" placeholder name="phone" />
+                                <input type="number" placeholder name="phone" onChange={(e) => setData('phone', e.target.value)} />
                               </div>
                               <div className="form-group mb-2">
                                 <label>Subject*</label>
-                                <input type="text" placeholder name="subject" />
+                                <input type="text" placeholder name="subject" onChange={(e) => setData('subject', e.target.value)} />
                               </div>
                               <div className="form-group mb-2">
                                 <label>Address*</label>
-                                <textarea name="address" id cols={15} rows={5} defaultValue={""} />
+                                <textarea name="address" id cols={15} rows={5} onChange={(e) => setData('address', e.target.value)} />
                               </div>
                               <div className="form-group mb-2">
                                 <input type="submit" className="btn"  style={{backgroundColor:"none"}} value="Send Message" />
