@@ -4,14 +4,15 @@ import { useForm, usePage } from '@inertiajs/react';
 import React from 'react';
 import '../../../public/frontend/assets/js/main'
 import banner from '../../../public/frontend/assets/images/pexels-wendy-wei-1190297.jpg'
+import eventimg from '../../../public/frontend/assets/images/recent (1).jpg'
 
 
 
 
 const EventDetails = (props) => {
     const {data, setData} = useForm() ;
-    const {eventtype, user, token} = usePage().props
-    // console.log(eventtype);
+    const {eventtype, categories, user, token} = usePage().props
+   
     function calculateAdvancePrice(price) {
         return price * 0.5;
     }
@@ -61,20 +62,25 @@ const EventDetails = (props) => {
                 <label>Phone Number*</label>
                 <input type="number" placeholder name="phone_number" onChange={ (e) => setData('phone_number', e.target.value) }/>
               </div>
+              <select name='event_category' onChange={(e) => setData('event_category', e.target.value)}>
+              <option value="">Select an option</option>
+              {categories.map(category => (
+                <option key={category.id} value={category.id}>{category.name}</option>
+              ))}
+            </select>
 
-              <div className="form-group mb-2">
+              {/* <div className="form-group mb-2">
                 <label>Event Category*</label>
                 <input type="text" placeholder name="event_category" onChange={ (e) => setData('event_category', e.target.value) }/>
-              </div>
-
+              </div> */}
               <div className="form-group mb-2">
                 <label>Number of Person*</label>
                 <input type="text" placeholder name="member" onChange={ (e) => setData('member', e.target.value) }/>
               </div>
                {/* get customer id  */}
-              <input type="text" name="customer_id" defaultValue={user.id} />
+              <input type="hidden" name="customer_id" defaultValue={user.id} />
               {/* get Eventtype id  */}
-              <input type="text" name="eventtype_id" defaultValue={ eventtype.id } />
+              <input type="hidden" name="eventtype_id" defaultValue={ eventtype.id } />
               <div className="form-group mb-2">
                 <label>Description*</label>
                 <textarea name="description" id cols={15} rows={5}  onChange={ (e) => setData('description', e.target.value) }/>
@@ -256,7 +262,7 @@ const EventDetails = (props) => {
             <article className="post mb-2 bg-grey">
               <div className="s-content d-flex align-items-center justify-space-between">
                 <div className="sidebar-image w-25 me-3 rounded">
-                  <a href="product-detail.html"><img src="('frontend/assets/images/recent (3).jpg')" alt /></a>
+                  <a href="product-detail.html"><img src={eventimg} alt /></a>
                 </div>
                 <div className="content-list w-75">
                   <h6 className="mb-1"><a href="product-detail.html">Engaging Evening</a></h6>
@@ -267,7 +273,7 @@ const EventDetails = (props) => {
             <article className="post mb-2 bg-grey">
               <div className="s-content d-flex align-items-center justify-space-between">
                 <div className="sidebar-image w-25 me-3 rounded">
-                  <a href="product-detail.html"><img src="('frontend/assets/images/recent (5).jpg')" alt /></a>
+                  <a href="product-detail.html"><img src={eventimg} alt /></a>
                 </div>
                 <div className="content-list w-75">
                   <h6 className="mb-1"><a href="product-detail.html">Effervescent Event</a></h6>
@@ -278,7 +284,7 @@ const EventDetails = (props) => {
             <article className="post mb-2 bg-grey">
               <div className="s-content d-flex align-items-center justify-space-between">
                 <div className="sidebar-image w-25 me-3 rounded">
-                  <a href="product-detail.html"><img src="('frontend/assets/images/recent (6).jpg')" alt /></a>
+                  <a href="product-detail.html"><img src={eventimg} alt /></a>
                 </div>
                 <div className="content-list w-75">
                   <h6 className="mb-1"><a href="product-detail.html">Unforgettable Affair</a></h6>
@@ -289,7 +295,7 @@ const EventDetails = (props) => {
             <article className="post bg-grey">
               <div className="s-content d-flex align-items-center justify-space-between">
                 <div className="sidebar-image w-25 me-3 rounded">
-                  <a href="product-detail.html"><img src="('frontend/assets/images/recent (7).jpg')" alt /></a>
+                  <a href="product-detail.html"><img src={eventimg} alt /></a>
                 </div>
                 <div className="content-list w-75">
                   <h6 className="mb-1"><a href="product-detail.html">The Perfect Party</a></h6>

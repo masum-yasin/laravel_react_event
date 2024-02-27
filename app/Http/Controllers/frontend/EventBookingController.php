@@ -23,8 +23,9 @@ class EventBookingController extends Controller
         $user = Auth::guard('customer')->user() ?? '' ;
         $token = csrf_token() ;
         $eventtype = Eventtype::find($id);
+        $categories = Category::get();
       
-        return Inertia::render('EventDetails',compact('eventtype', 'user', 'token'));
+        return Inertia::render('EventDetails',compact('eventtype','categories','user', 'token'));
     }
     public function store(Request $request){
 
