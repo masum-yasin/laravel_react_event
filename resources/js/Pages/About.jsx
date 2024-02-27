@@ -15,8 +15,8 @@ const About = () => {
     <div className="breadcrumb-outer">
       <div className="container">
         <div className="breadcrumb-content text-center pt-14 pb-2">
-          <h5 className="theme mb-0">Eventiz</h5>
-          <h1 className="mb-0 white">About Us</h1>
+          <h5 className="theme mb-0 h5">Eventiz</h5>
+          <h1 className="mb-0 white h1">About Us</h1>
         </div>
       </div>
     </div>
@@ -76,7 +76,7 @@ const About = () => {
                   <i className="fas fa-lightbulb fs-1 theme" />
                 </div>
                 <div className="box-body">
-                  <h4 className="infobox-title mb-1">Our Vision </h4>
+                  <h4 className="infobox-title mb-1 h-4">Our Vision </h4>
                   <p className="mb-0">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
                 </div>
               </div>

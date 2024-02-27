@@ -1,10 +1,11 @@
 import Footer from '@/Components/Footer';
 import Header from '@/Components/Header';
-import { usePage } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import React from 'react';
 
+
 const Home = (props) => {
-    const { eventtype,categories} = usePage().props
+    const { eventtype,categories, user, token} = usePage().props
     console.log(eventtype);
 const CategoryName = (id)=>{
   const category = categories.find(category =>category.id===id);
@@ -12,7 +13,7 @@ const CategoryName = (id)=>{
 }
     return (
         <div>
-            <Header></Header>
+            <Header user={user} token={token} ></Header>
              <div>
   {/* Preloader */}
   {/* <div id="preloader">
@@ -31,7 +32,7 @@ const CategoryName = (id)=>{
             <div className="banner-content text-lg-start text-center">
               <h4 className="theme mb-0">Big Event 2022</h4>
               <div className="selector4" style={{display: 'flex', justifyContent: 'center'}}>
-                <h1 className="ah-headline white">
+                <h1 className="ah-headline white h1">
                   <span>World Biggest 2023</span>
                   <span className="ah-words-wrapper white">
                     <b className="is-visible textcap">Conference</b>
@@ -256,6 +257,7 @@ const CategoryName = (id)=>{
             <div className="col-lg-6 d-flex">
               <div className="schedule-content text-lg-start text-center py-4">
                 <h4 className="mb-1" style={{fontSize:"25px",color:"red"}}>{CategoryName(item.categories_id)}</h4>
+                <button className='btn btn-2 btn-warning'><a href={'frontend/eventbooking/' + item.id}>Book Now</a></button>
              
                 <ul className="schedule-items d-flex justify-content-lg-start justify-content-center">
                   <li className="d-flex align-items-center me-4">

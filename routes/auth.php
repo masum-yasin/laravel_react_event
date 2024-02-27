@@ -104,7 +104,7 @@ Route::middleware('auth')->group(function () {
     Route::post('customer/registerStore', [CustomerController::class,'registerStore'])->name('customer.registerStore');
 
      Route::post('customer/login', [CustomerController::class,'login'])->name('customerLogin');
-     Route::post('customer/logout', [CustomerController::class, 'logout'])->name('customer.logout');
+     Route::get('customer/logout', [CustomerController::class, 'logout'])->name('customer.logout');
      Route::get('customer/dashboard', [CustomerController::class, 'dashboard'])->name('customer.dashboard')->middleware('customer');
      Route::get('customer/mybooking', [CustomerController::class, 'mybooking'])->name('customer.mybooking');
     // Here are resource Routing Start//

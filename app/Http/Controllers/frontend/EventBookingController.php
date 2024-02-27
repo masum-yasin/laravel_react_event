@@ -7,8 +7,8 @@ use App\Models\Booking;
 use App\Models\Category;
 use App\Models\Eventtype;
 use Illuminate\Http\Request;
-
-
+use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class EventBookingController extends Controller
 {
@@ -20,10 +20,11 @@ class EventBookingController extends Controller
 
 
     public function create($id){
-   
+        $user = Auth::guard('customer')->user() ?? '' ;
+        $token = csrf_token() ;
         $eventtype = Eventtype::find($id);
       
-        return view('frontend.booking.eventbooking',compact('eventtype'));
+        return Inertia::render('EventDetails',compact('eventtype', 'user', 'token'));
     }
     public function store(Request $request){
 
@@ -37,6 +38,7 @@ class EventBookingController extends Controller
             'address'=>'required|min:4',
             'event_category'=>'required|min:4',
         ]);
+        
         // $filename = time(). "." . $request->event_catalog->extension();
         if($validate){
             $data = [
@@ -48,7 +50,7 @@ class EventBookingController extends Controller
                 'description'=>$request->description,
                 'address'=>$request->address,
                 'event_category'=>$request->event_category,
-                'customer_id' => $request->customer_id ,
+                'customer_id' => $request->customer_id,
                 'booking_price' => $request->booking_price ,
                 'payment_method' => $request->payment_method,
                 't_id' => $request->t_id,

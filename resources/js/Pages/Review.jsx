@@ -4,11 +4,11 @@ import { useForm, usePage } from '@inertiajs/react';
 import React from 'react';
 
 const Review = (props) => {
-  // const {data,setData,post} = useForm({});
-  // handleSubmit = (e)=>{
-  //   e.preventDefault();
-  //   post(route('userreview.store'));
-  // }
+  const {data,setData,post} = useForm({});
+ const  handleSubmit = (e)=>{
+    e.preventDefault();
+    post(route('userreview.store'),data);
+  }
     const {reviews} = usePage().props
     console.log(reviews);
     return (
@@ -23,7 +23,7 @@ const Review = (props) => {
       <div className="container">
         <div className="breadcrumb-content text-center pt-14 pb-2">
           <h5 className="theme mb-0">Eventiz</h5>
-          <h1 className="mb-0 white">Archives: Shop</h1>
+          <h1 className="mb-0 white h1">Archives: Shop</h1>
         </div>
       </div>
     </div>
@@ -49,8 +49,8 @@ const Review = (props) => {
                   </div>
                   <div className="articles-content-main">
                     <div className="articles-content pt-4">
-                      <h1 className="mb-1 h-1">{item.review_title}</h1>
-                      <h3 className="mb-1 h-3 mt-5">{item.occupation}</h3>
+                      <h1 className="mb-1 ">{item.review_title}</h1>
+                      <h3 className="mb-1  mt-5">{item.occupation}</h3>
                     <div className='d-flex align-items-sm-center justify-center gap-4 mt-3'>
                   {Array(item.rating).fill().map((_,index)=>(
                       
@@ -71,29 +71,29 @@ const Review = (props) => {
              <div className='mt-5'>
 
 
-          <form method="post" action="{{route('userreview.store')}}" encType="multipart/form-data">
+          <form method="post" onSubmit={handleSubmit}>
   <div className="form-group mb-2">
     <label>Review Title*</label>
-    <input type="text" placeholder name="review_title" />
+    <input type="text" placeholder onChange={(e)=>setData('review_title',e.target.value)} name="review_title" />
   </div>
   <div className="form-group mb-2">
     <label>consumer occupation*</label>
-    <input type="text" placeholder name="occupation" />
+    <input type="text" onChange={(e)=>setData('occupation',e.target.value)} placeholder name="occupation" />
   </div>
   <div className="form-group mb-2">
     <label>Give Start Rating*</label><br />
-    One Star<input type="radio" defaultValue={1} name="rating" className id="radio" placeholder="subject" /><br />
-    Two Star<input type="radio" defaultValue={1} name="rating" className id="radio" placeholder="subject" /><br />
-    Three Star<input type="radio" defaultValue={3} name="rating" className id="radio" placeholder="subject" /><br />
-    Four Star<input type="radio" defaultValue={1} name="rating" className id="radio" placeholder="subject" /><br />
-    Five Star<input type="radio" name="rating" className id="radio" defaultValue={5} placeholder="subject" /><br />
+    One Star<input type="radio" onChange={(e)=>setData('rating',e.target.value)}  defaultValue={1} name="rating" className id="radio" placeholder="subject" /><br />
+    Two Star<input type="radio" onChange={(e)=>setData('rating',e.target.value)}  defaultValue={2} name="rating" className id="radio" placeholder="subject" /><br />
+    Three Star<input type="radio" onChange={(e)=>setData('rating',e.target.value)}  defaultValue={3} name="rating" className id="radio" placeholder="subject" /><br />
+    Four Star<input type="radio" onChange={(e)=>setData('rating',e.target.value)}  defaultValue={4} name="rating" className id="radio" placeholder="subject" /><br />
+    Five Star<input type="radio" onChange={(e)=>setData('rating',e.target.value)}  name="rating" className id="radio" defaultValue={5} placeholder="subject" /><br />
   </div>
   <div className="form-group mb-2">
     <label>Review Description*</label>
-    <input type="text" placeholder name="descripation" />
+    <input type="text" onChange={(e)=>setData('descripation',e.target.value)}  placeholder  name="descripation" />
   </div>
   <div className="form-group mb-2">
-    <input type="submit" className="nir-btn" id defaultValue="Send Message" />
+    <input type="submit" className="btn nir-btn" style={{backgroundColor:"none"}} id value="Send Message" />
   </div>
 </form>
              </div>
@@ -210,14 +210,14 @@ const Review = (props) => {
                       <a href="product-detail.html"><img src="frontend/assets/images/products/review.jpg" alt /></a>
                     </div>
                     <div className="content-list w-75">
-                      <h3 className="mb-1"><a href="product-detail.html">Lewis Shirt</a></h3>
+                      <h3 className="mb-1 h3"><a href="product-detail.html">Lewis Shirt</a></h3>
                       <div className="date small">10 Apr 2023</div>
                     </div>    
                   </div> 
                 </article>
               </div>
               <div className="sidebar-item bg-grey p-4 pb-3">
-                <h5 className="bg-white p-3">Social Media</h5>
+                <h5 className="bg-white p-3 h5">Social Media</h5>
                 <div className="social-links mt-2">
                   <ul className="row">
                     <li className="mb-1 col-6">

@@ -6,7 +6,7 @@ import React from 'react';
 const Contact = () => {
     const { data, setData, post } = useForm({});
     
-  handleSubmit = (e)=>{
+  const handleSubmit = (e)=>{
     e.preventDefault();
     post(route('contact.store'),data);
   }
@@ -21,7 +21,7 @@ const Contact = () => {
       <div className="container">
         <div className="breadcrumb-content text-center pt-14 pb-2">
           <h5 className="theme mb-0">Eventiz</h5>
-          <h1 className="mb-0 white">Contact us</h1>
+          <h1 className="mb-0 white h1">Contact us</h1>
         </div>
       </div>
     </div>
@@ -33,10 +33,10 @@ const Contact = () => {
     <div className="container">
       <div className="contact-info-main mt-0">
         <div className="section-title mb-5 w-75 mx-auto text-center">
-          <h3 className="h-title">Contact</h3>
-          <h4 className="theme">Touch WIth Us</h4>
+          <h3 className="h-title h3">Contact</h3>
+          <h4 className="theme  h4">Touch WIth Us</h4>
           <div className="selector4" style={{display: 'flex', justifyContent: 'center'}}>
-            <h2 className="ah-headline mb-0">
+            <h2 className="ah-headline mb-0 h2">
               <span>How Can We </span>
               <span className="ah-words-wrapper white theme">
                 <b className="is-visible textcap">help?</b>
@@ -53,7 +53,7 @@ const Contact = () => {
                   <i className="fa fa-map-marker-alt white" />
                 </div>
                 <div className="info-content">
-                  <h5>Galleria Conference Hall</h5>
+                  <h5 className='h5'>Galleria Conference Hall</h5>
                   <p className="mb-0">19 By Pass Main Street, Bali, Indonesia, BC 22196</p>
                 </div>
               </div>
@@ -86,26 +86,32 @@ const Contact = () => {
             <div className="row">
               <div className="col-lg-8 pe-lg-4 mb-4">
                 <div id="contactform-error-msg" />
-               <form method="post" action="#" name="contactform2" id="contactform2" >
-  <div className="form-group mb-2">
-    <input type="text" name="first_name" className="form-control" id="fullname" placeholder="First Name" />
-  </div>
-  <div className="form-group mb-2">
-    <input type="email" name="email" className="form-control" id="email" placeholder="Email" />
-  </div>
-  <div className="form-group mb-2">
-    <input type="text" name="phone" className="form-control" id="phnumber" placeholder="Phone" />
-  </div>
-  <div className="form-group mb-2">
-    <input type="text" name="subject" className="form-control" id="llastname" placeholder="subject" />
-  </div>
-  <div className="textarea mb-2">
-    <textarea name="comments" placeholder="Enter a message" defaultValue={""} />
-  </div>
-  <div className="comment-btn text-center text-lg-start">
-    <input type="submit" className="nir-btn" id="submit2" defaultValue="Send Message" />
-  </div>
-</form>
+                                          <form  onSubmit={onsubmit}>
+                              <div className="form-group mb-2">
+                                <label>Name*</label>
+                                <input type="text" placeholder name="name" />
+                              </div>
+                              <div className="form-group mb-2">
+                                <label>Email*</label>
+                                <input type="email" placeholder name="email" />
+                              </div>
+                              <div className="form-group mb-2">
+                                <label>Phone Number*</label>
+                                <input type="number" placeholder name="phone" />
+                              </div>
+                              <div className="form-group mb-2">
+                                <label>Subject*</label>
+                                <input type="text" placeholder name="subject" />
+                              </div>
+                              <div className="form-group mb-2">
+                                <label>Address*</label>
+                                <textarea name="address" id cols={15} rows={5} defaultValue={""} />
+                              </div>
+                              <div className="form-group mb-2">
+                                <input type="submit" className="btn"  style={{backgroundColor:"none"}} value="Send Message" />
+                              </div>
+                            </form>
+
 
               </div>
               <div className="col-lg-4 ps-lg-4 mb-4">

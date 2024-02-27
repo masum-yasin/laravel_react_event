@@ -8,6 +8,7 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Inertia\Inertia;
 
 class CustomerController extends Controller
 {
@@ -44,12 +45,14 @@ class CustomerController extends Controller
 
   public function mybooking()
   {
+    $user = Auth::guard('customer')->user() ?? '';
+    $token = csrf_token();
       $customer_id = Auth::guard('customer')->user()->id;
       // $product = Order::where('student_id', $student_id)->get();
       $booking = Booking::where('customer_id', $customer_id)
       ->where('status', 0)
       ->get();
-      return view('frontend.customer.mybooking', compact('booking'));
+      return Inertia::render('MyBooking', compact('booking','user','token'));
   }
 
 

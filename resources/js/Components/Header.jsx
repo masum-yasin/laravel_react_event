@@ -1,7 +1,11 @@
 import { Link } from '@inertiajs/react';
 import React from 'react';
+import logo from '../../../public/frontend/assets/images/logo-white.png'
+import MyBooking from './../Pages/MyBooking';
 
-const Header = () => {
+
+
+const Header = ({user, token}) => {
     return (
         <div>
           <div>
@@ -14,8 +18,8 @@ const Header = () => {
           {/* Brand and toggle get grouped for better mobile display */}
           <div className="navbar-header">
             <a className="navbar-brand" href="index.html">
-              <img src="frontend/assets/images/logo-white.png" alt="image" />
-              <img src="frontend/assets/images/logo.png" alt="image" />
+              <img src={logo} alt="image" />
+              {/* <img src="frontend/assets/images/logo.png" alt="image" /> */}
             </a>
           </div>
           {/* Collect the nav links, forms, and other content for toggling */}
@@ -57,22 +61,68 @@ const Header = () => {
                 </ul>
               </li>
               <li><Link href='customercontact' className>Contact</Link></li>
-              {/* <li className="submenu dropdown">
+              <li className="submenu dropdown">
                 <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin dashboard<i className="fas fa-caret-down ms-1" aria-hidden="true" /></a> 
                 <ul className="dropdown-menu">
                   <li>
-                    <Link href={route('dashboard')} className="btn" style={{width: 100}}>Super Admin</Link>
+                    <a href="/dashboard" className="btn" style={{width: 100}}>Super Admin</a>
                   </li>
                   <li>
-                    <Link href={route('editor_login_form')} className="btn" style={{width: 100, margin: '0 3px'}}>Editor</Link>
+                    <a href='editor/login' className="btn" style={{width: 100, margin: '0 3px'}}>Editor</a>
                   </li>
                   <li>
-                    <Link href={route('admin_login_form')} className="btn btn-warning " style={{width: 100}}>Admin</Link>
+                    <a href='admin/login' className="btn btn-warning " style={{width: 100}}>Admin</a>
                   </li>
+                 
                 </ul>
-              </li>  */}
-{/*               
-              @if(Auth::guard('customer')-&gt;check())
+              </li> 
+
+              <li className="submenu dropdown">
+                <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Customer<i className="fas fa-caret-down ms-1" aria-hidden="true" /></a> 
+                <ul className="dropdown-menu">
+                {
+  user ? (
+    <div>
+      <li>
+        <Link href="/customer/mybooking">MyBooking</Link>
+      </li>
+      <div>
+        <form action={route("customer.logout")}>
+          <input type="hidden" name="_token" value={token} />
+          <button
+            type="submit"
+            className="btn btn-2 btn-success text-center"
+          >
+            Log out
+          </button>
+        </form>
+      </div>
+    </div>
+  ) : (
+    <li className="button-header">
+      <a href="/customer/create">Signup</a>
+    </li>
+  )
+}
+
+                </ul>
+              </li>
+
+
+
+
+
+
+
+             
+
+
+
+              
+
+             
+              
+              {/* @if(Auth::guard('customer')-&gt;check())
               <li><a href="{{route('customer.mybooking')}}">My Booking</a></li>
               @endif
               <li>
@@ -81,7 +131,7 @@ const Header = () => {
                   @csrf
                   <button type="submit" className="btn btn-warning"> Logout </button>
                 </form>
-                @else <a href="{{route('customer_login_form')}}"> Login </a>
+                @else <a href='customer/login'> Login </a>
                 @endif
               </li> */}
             </ul>
