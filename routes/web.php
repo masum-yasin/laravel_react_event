@@ -130,7 +130,10 @@ Route::middleware('auth')->group(function () {
 });
 // middleware editor dashboard//
 Route::get('editor/login',[EditorController::class,'login'])->name('editor_login_form');
-Route::post('editor/login',[EditorController::class,'store'])->name('EditorLogin');
+Route::get('editor/create',[EditorController::class,'EditorCreate'])->name('editor.create');
+Route::get('editor/index',[EditorController::class,'index'])->name('editor.index');
+Route::post('editor/store',[EditorController::class,'store'])->name('editor.store');
+Route::post('editor/login',[EditorController::class,'EditorAuth'])->name('EditorLogin');
 Route::post('editor/logout',[EditorController::class,'destroy'])->name('editor.logout');
 Route::get('editor/edashobard',[EditorController::class,'edashboard'])->name('editor.edashboard')->middleware('editor');
 

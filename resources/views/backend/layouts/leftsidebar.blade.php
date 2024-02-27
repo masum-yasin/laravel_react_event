@@ -123,6 +123,7 @@
                                             </ul>
                                         </li>
                                     </ul>
+                                    {{-- Super Admin Dasboard Routing --}}
                                
              @else
             <ul id="accordion-menu">
@@ -251,8 +252,16 @@
                         </a>
                         <ul class="submenu">
                             <li><a href="{{route('contact.index')}}">All Contact</a></li>
-                           </ul>
+                        </ul>
+                           
                     </li>
+                        <li class="dropdown">
+                            <a href="{{route('editor.create')}}" class="dropdown-toggle">
+                                <span class="micon dw dw-copy"></span><span class="mtext">Create Editor</span>
+                            </a>
+                            
+                        </li>
+                   
                     </ul>   
             @endif
             
