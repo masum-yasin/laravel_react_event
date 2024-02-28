@@ -1,8 +1,11 @@
 import Footer from '@/Components/Footer';
 import Header from '@/Components/Header';
+import { usePage } from '@inertiajs/react';
 import React from 'react';
 
-const Blog = () => {
+const Blog = (props) => {
+  const {categories,blogs} = usePage().props
+  // console.log(categories,blogs);
     return (
         <div>
             <Header></Header>
@@ -27,7 +30,32 @@ const Blog = () => {
         <div className="col-lg-8 pe-lg-4">
           <div className="listing-inner">
             <div className="row">
+              {
+                blogs.map(item =>(
               <div className="col-lg-6 col-md-6 mb-4">
+                <div className="articles-item border-all bg-white overflow-hidden position-relative">
+                  <div className="articles-image">
+                    <img src={"uploads/"+ item.image} />
+                    <div className="articles-cats position-absolute top-0 end-0 bg-theme p-1 px-2 white mt-2 me-3">Ecommerce</div>
+                  </div>
+                  <div className="articles-content-main">
+                    <div className="articles-content p-4 pb-2">
+                      <h4><a href="detail-1.html">{item.post_name}</a></h4>
+                      <a href="#" className="theme textupper small">{item.location}</a>
+                    </div>
+                    <ul className="border-top d-block w-100 p-4 py-2">
+                      <li>August 25, 2022</li> |
+                      <li> No Comments</li>
+                    </ul>
+                    <p>{item.description}</p>
+                  </div>
+                </div>
+              </div>
+              ))
+            }
+            
+            
+              {/* <div className="col-lg-6 col-md-6 mb-4">
                 <div className="articles-item border-all bg-white overflow-hidden position-relative">
                   <div className="articles-image">
                     <img src="frontend/assets/images/blog/blog1.jpg" alt="image" />
@@ -44,8 +72,8 @@ const Blog = () => {
                     </ul>
                   </div>
                 </div>
-              </div>
-              <div className="col-lg-6 col-md-6 mb-4">
+              </div> */}
+              {/* <div className="col-lg-6 col-md-6 mb-4">
                 <div className="articles-item border-all bg-white overflow-hidden position-relative">
                   <div className="articles-image">
                     <img src="frontend/assets/images/blog/blog2.jpg" alt="image" />
@@ -62,8 +90,8 @@ const Blog = () => {
                     </ul>
                   </div>
                 </div>
-              </div>
-              <div className="col-lg-6 col-md-6 mb-4">
+              </div> */}
+              {/* <div className="col-lg-6 col-md-6 mb-4">
                 <div className="articles-item border-all bg-white overflow-hidden position-relative">
                   <div className="articles-image">
                     <img src="frontend/assets/images/blog/blog3.jpg" alt="image" />
@@ -80,61 +108,7 @@ const Blog = () => {
                     </ul>
                   </div>
                 </div>
-              </div>
-              <div className="col-lg-6 col-md-6 mb-4">
-                <div className="articles-item border-all bg-white overflow-hidden position-relative">
-                  <div className="articles-image">
-                    <img src="frontend/assets/images/blog/blog1.jpg" alt="image" />
-                    <div className="articles-cats position-absolute top-0 end-0 bg-theme p-1 px-2 white mt-2 me-3">Ecommerce</div>
-                  </div>
-                  <div className="articles-content-main">
-                    <div className="articles-content p-4 pb-2">
-                      <h4><a href="detail-1.html">How To Optimize Your Blog For High Ranking</a></h4>
-                      <a href="#" className="theme textupper small">Continue Reading</a>
-                    </div>
-                    <ul className="border-top d-block w-100 p-4 py-2">
-                      <li>August 25, 2022</li> |
-                      <li> No Comments</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-6 col-md-6 mb-4">
-                <div className="articles-item border-all bg-white overflow-hidden position-relative">
-                  <div className="articles-image">
-                    <img src="frontend/assets/images/blog/blog2.jpg" alt="image" />
-                    <div className="articles-cats position-absolute top-0 end-0 bg-theme p-1 px-2 white mt-2 me-3">Inspiration</div>
-                  </div>
-                  <div className="articles-content-main">
-                    <div className="articles-content p-4 pb-2">
-                      <h4><a href="detail-1.html">Runner with Autism Graces of Women</a></h4>
-                      <a href="#" className="theme textupper small">Continue Reading</a>
-                    </div>
-                    <ul className="border-top d-block w-100 p-4 py-2">
-                      <li>August 25, 2022</li> |
-                      <li> No Comments</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-6 col-md-6 mb-4">
-                <div className="articles-item border-all bg-white overflow-hidden position-relative">
-                  <div className="articles-image">
-                    <img src="frontend/assets/images/blog/blog3.jpg" alt="image" />
-                    <div className="articles-cats position-absolute top-0 end-0 bg-theme p-1 px-2 white mt-2 me-3">Public</div>
-                  </div>
-                  <div className="articles-content-main">
-                    <div className="articles-content p-4 pb-2">
-                      <h4><a href="detail-1.html">Services To Grow Your Business Sell Affiliate</a></h4>
-                      <a href="#" className="theme textupper small">Continue Reading</a>
-                    </div>
-                    <ul className="border-top d-block w-100 p-4 py-2">
-                      <li>August 25, 2022</li> |
-                      <li> No Comments</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+              </div> */}
             </div>
             <div className="pagination-main text-center">
               <ul className="pagination">

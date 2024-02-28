@@ -4,7 +4,7 @@ import { useForm, usePage } from '@inertiajs/react';
 import React from 'react';
 
 const Review = (props) => {
-  const {data,setData,post} = useForm({});
+  const {data,setData,post,user} = useForm({});
  const  handleSubmit = (e)=>{
     e.preventDefault();
     post(route('userreview.store'),data);
@@ -13,7 +13,7 @@ const Review = (props) => {
     console.log(reviews);
     return (
         <div>
-            <Header></Header>
+            <Header value={user}></Header>
            <div>
           <div>
           <div>
@@ -76,6 +76,10 @@ const Review = (props) => {
     <label>Review Title*</label>
     <input type="text" placeholder onChange={(e)=>setData('review_title',e.target.value)} name="review_title" />
   </div>
+  {/* <div className="form-group mb-2">
+                <label>Name*</label>
+                <input type="text" placeholder name="customer_id" defaultValue={user.name} />
+              </div> */}
   <div className="form-group mb-2">
     <label>consumer occupation*</label>
     <input type="text" onChange={(e)=>setData('occupation',e.target.value)} placeholder name="occupation" />

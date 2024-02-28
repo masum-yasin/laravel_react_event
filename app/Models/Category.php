@@ -21,6 +21,10 @@ class Category extends Model
     {
         return $this->hasMany(Sponsor::class);
     }
+    public function blog(): HasMany
+    {
+        return $this->hasMany(PostBlog::class);
+    }
     public function eventtype(): HasMany
     {
         return $this->hasMany(Eventtype::class);

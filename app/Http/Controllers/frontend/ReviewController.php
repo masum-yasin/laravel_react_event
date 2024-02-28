@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class ReviewController extends Controller
@@ -37,6 +38,7 @@ class ReviewController extends Controller
                 'descripation'=>$request->descripation,
                 'occupation'=>$request->occupation,
                 'rating'=>$request->rating,
+                
                 
                 
             ];
@@ -87,10 +89,11 @@ class ReviewController extends Controller
      return redirect()->route('userreview.index')->with('msg','Review Delete Successfully');
     }
     public function review(){
-
+        $user = Auth::guard('customer')->user() ?? '' ;
         $reviews = Review::get();
         return Inertia::render('Review',[
             'reviews'=>$reviews,
+            'user'=>$user,
         ]);
     }
 }

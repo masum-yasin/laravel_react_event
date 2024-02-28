@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\PostBlog;
 use Illuminate\Http\Request;
-
-
+use Inertia\Inertia;
 
 class PostBlogController extends Controller
 {
@@ -25,8 +24,7 @@ class PostBlogController extends Controller
      */
     public function create()
     {
-        $categorys =Category::get();
-        return view('backend.blogpost.create',compact('categorys'));
+        
     }
 
     /**
@@ -114,5 +112,10 @@ class PostBlogController extends Controller
         $blogs = PostBlog::find($id);
         if($blogs->delete());
         return redirect()->route('postblog.index')->with('msg','Blog Inserted Successfully');
+    }
+    public function PostBlog(){
+        $blogs = PostBlog::get();
+        $categories =Category::get();
+        return Inertia::render('Blog',compact('categories','blogs'));
     }
 }
