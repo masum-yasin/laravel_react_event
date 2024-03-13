@@ -5,7 +5,7 @@ import React from 'react';
 
 
 const Home = (props) => {
-    const { eventtype,categories, user, token} = usePage().props
+    const { eventtype,categories, user, token,FlashMessage} = usePage().props
     console.log(eventtype);
 const CategoryName = (id)=>{
   const category = categories.find(category =>category.id===id);

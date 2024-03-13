@@ -33,15 +33,15 @@ class EventBookingController extends Controller
             'customer_name'=>'required|min:4',
             'email'=>'required|email',
             'phone_number'=>'required|numeric',
-            'event_catalog'=>'mimes:jpg,jpeg,png',
             'member'=>'required|min:2',
             'description'=>'required|min:4',
             'address'=>'required|min:4',
-            'event_category'=>'required|min:4',
+           
         ]);
+        // dd($request->event_category) ;
         
-        // $filename = time(). "." . $request->event_catalog->extension();
-        if($validate){
+       
+            
             $data = [
                 'customer_name'=>$request->customer_name,
                 'email'=>$request->email,
@@ -60,10 +60,9 @@ class EventBookingController extends Controller
             // dd($data) ;
             $model = new Booking();
             if($model->insert($data)){
-                // $request->event_catalog->move('uploads',$filename);
-                return back()->with('msg','Blog Inserted Successfully');
+                return back()->with('msg','Booking Inserted Successfully');
             }
-        }
+        // }
     }
     public function status(Request $request,$id){
         $booking = Booking::find($id);
@@ -71,7 +70,6 @@ class EventBookingController extends Controller
             'status'=>$request->status
         ];
         $booking->update($data);
-        // return 'khibe baba'; }
         return back()->with('msg','status updated');
     }
 public function delete($id){

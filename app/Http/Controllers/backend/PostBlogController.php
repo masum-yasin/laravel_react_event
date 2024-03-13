@@ -24,7 +24,8 @@ class PostBlogController extends Controller
      */
     public function create()
     {
-        
+        $categorys =Category::get();
+        return view('backend.blogpost.create',compact('categorys'));
     }
 
     /**
@@ -111,7 +112,7 @@ class PostBlogController extends Controller
     {
         $blogs = PostBlog::find($id);
         if($blogs->delete());
-        return redirect()->route('postblog.index')->with('msg','Blog Inserted Successfully');
+        return redirect()->route('blogpost.index')->with('msg','Blog Inserted Successfully');
     }
     public function PostBlog(){
         $blogs = PostBlog::get();

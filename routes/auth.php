@@ -119,7 +119,7 @@ Route::middleware('auth')->group(function () {
        Route::resource('eventtype',EventtypeController::class);
     //Blog Route for show frontend
         Route::resource('blogpost',PostBlogController::class);
-        Route::get('blogpost',[PostBlogController::class,'PostBlog'])->name('blogpost');
+        Route::get('postblog',[PostBlogController::class,'PostBlog'])->name('postblog');
         // sponsors company  Routing//
         Route::resource('sponsor',SponsorController::class);
         // Event Schedule Routing//

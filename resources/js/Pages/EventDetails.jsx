@@ -12,6 +12,7 @@ import eventimg from '../../../public/frontend/assets/images/recent (1).jpg'
 const EventDetails = (props) => {
     const {data, setData} = useForm() ;
     const {eventtype, categories, user, token} = usePage().props
+    console.log(data);
    
     function calculateAdvancePrice(price) {
         return price * 0.5;
@@ -47,6 +48,8 @@ const EventDetails = (props) => {
           </nav>
           <div className="single-add-review mb-4 text-center text-lg-start">
             <h2 className="text-center text-lg-start h2">Event Booking Now</h2>
+
+
             <form method="post" action={route('booking.store')}>
                 <input type="hidden" name='_token' value={token} />
 
@@ -62,14 +65,16 @@ const EventDetails = (props) => {
                 <label>Phone Number*</label>
                 <input type="number" placeholder name="phone_number" onChange={ (e) => setData('phone_number', e.target.value) }/>
               </div>
-              <select name='event_category' onChange={(e) => setData('event_category', e.target.value)}>
+
+
+              <select name='event_category' onChange={(e) => setData('event_category', e.target.value)} style={{background:"black"}}>
               <option value="">Select an option</option>
               {categories.map(category => (
                 <option key={category.id} value={category.id}>{category.name}</option>
               ))}
-            </select>
-
-              {/* <div className="form-group mb-2">
+            </select> 
+            
+             {/* <div className="form-group mb-2">
                 <label>Event Category*</label>
                 <input type="text" placeholder name="event_category" onChange={ (e) => setData('event_category', e.target.value) }/>
               </div> */}
@@ -131,16 +136,16 @@ const EventDetails = (props) => {
                 </div>
               </div>
               <div>
-                <div className="gallery-item">
+                {/* <div className="gallery-item">
                   <div className="gallery-image position-relative">
                     <img src={'/uploads/'+ eventtype.image} alt="image" />
                     <a href data-lightbox="gallery" className="gallery_trigger">
                       <i className="fa fa-search" />
                     </a>
                   </div>
-                </div>
+                </div> */}
               </div>
-              <div>
+              {/* <div>
                 <div className="gallery-item">
                   <div className="gallery-image position-relative">
                     <img src={'/uploads/'+ eventtype.image} alt="image" />
@@ -149,29 +154,29 @@ const EventDetails = (props) => {
                     </a>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div>
-               <div className="gallery-item">
+               {/* <div className="gallery-item">
                   <div className="gallery-image position-relative">
                     <img src={'/uploads/'+ eventtype.image} alt="image" />
                     <a href data-lightbox="gallery" className="gallery_trigger">
                       <i className="fa fa-search" />
                     </a>
                   </div>
-                </div> 
+                </div>  */}
               </div>
               <div>
-                <div className="gallery-item">
+                {/* <div className="gallery-item">
                   <div className="gallery-image position-relative">
                     <img src={'/uploads/'+ eventtype.image} alt="image" />
                     <a href="('frontend/assets/images/products/Travel Bag.H03.2k.png')" data-lightbox="gallery" className="gallery_trigger">
                       <i className="fa fa-search" />
                     </a>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
-            <div className="slider-nav bg-white">
+            {/* <div className="slider-nav bg-white">
               <div>
                 <img src={'/uploads/'+ eventtype.image} alt="image" />
               </div>
@@ -187,7 +192,7 @@ const EventDetails = (props) => {
               <div>
                 <img src={'/uploads/'+ eventtype.image} alt="image" />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         

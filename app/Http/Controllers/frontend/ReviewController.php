@@ -38,14 +38,16 @@ class ReviewController extends Controller
                 'descripation'=>$request->descripation,
                 'occupation'=>$request->occupation,
                 'rating'=>$request->rating,
+                'customer_name'=>$request->customer_name,
                 
                 
                 
             ];
+            // dd($data) ;
             
             $model = new Review();
             if($model->create($data)){
-               return redirect()->route('userreview.create')->with('msg','Review Inserted Successfully');
+               return redirect()->back()->with('msg','Review Inserted Successfully');
             }
         }
     
@@ -89,11 +91,13 @@ class ReviewController extends Controller
      return redirect()->route('userreview.index')->with('msg','Review Delete Successfully');
     }
     public function review(){
+        $token = csrf_token();
         $user = Auth::guard('customer')->user() ?? '' ;
         $reviews = Review::get();
         return Inertia::render('Review',[
             'reviews'=>$reviews,
             'user'=>$user,
+            'token'=>$token,
         ]);
     }
 }

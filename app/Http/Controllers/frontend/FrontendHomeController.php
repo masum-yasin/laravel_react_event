@@ -23,6 +23,7 @@ class FrontendHomeController extends Controller
             'categories' => $categories,
             'user' => $user,
             'token' => $token,
+            'FlashMessage' =>session('msg')
         ]) ;
     }
     public function about(){

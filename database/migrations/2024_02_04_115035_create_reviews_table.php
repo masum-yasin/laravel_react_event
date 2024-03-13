@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('review_title');
             $table->string('occupation');
             $table->string('descripation');
-            $table->tinyInteger('customer_id')->nullable();
+            $table->tinyInteger('customer_name')->nullable();
             $table->boolean('status')->default(1);
             $table->tinyInteger('rating')->default(5);
             $table->timestamp('created_at')->useCurrent();

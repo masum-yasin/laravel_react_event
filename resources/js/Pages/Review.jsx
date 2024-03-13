@@ -4,13 +4,15 @@ import { useForm, usePage } from '@inertiajs/react';
 import React from 'react';
 
 const Review = (props) => {
-  const {data,setData,post,user} = useForm({});
+  const {data,setData,post} = useForm({});
  const  handleSubmit = (e)=>{
     e.preventDefault();
     post(route('userreview.store'),data);
   }
     const {reviews} = usePage().props
-    console.log(reviews);
+    const {user} = usePage().props
+    const {token} = usePage().props
+    console.log(reviews,user);
     return (
         <div>
             <Header value={user}></Header>
@@ -71,15 +73,16 @@ const Review = (props) => {
              <div className='mt-5'>
 
 
-          <form method="post" onSubmit={handleSubmit}>
+          <form method="post" action={route('userreview.store')} >
+            <input type="hidden" name='_token' value={token} />
   <div className="form-group mb-2">
     <label>Review Title*</label>
     <input type="text" placeholder onChange={(e)=>setData('review_title',e.target.value)} name="review_title" />
   </div>
-  {/* <div className="form-group mb-2">
+  <div className="form-group mb-2">
                 <label>Name*</label>
-                <input type="text" placeholder name="customer_id" defaultValue={user.name} />
-              </div> */}
+                <input type="text"  name="customer_name" defaultValue={user.name} />
+              </div>
   <div className="form-group mb-2">
     <label>consumer occupation*</label>
     <input type="text" onChange={(e)=>setData('occupation',e.target.value)} placeholder name="occupation" />
